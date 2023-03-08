@@ -1,14 +1,22 @@
 import React from 'react'
-import BookingDetail from './BookingDetail'
+import BookingItem from './BookingItem'
 
-const BookingList = () => {
+const BookingList = ({bookings}) => {
+
+  const bookingNodes = bookings.map(booking => {
+    return <BookingItem  key={booking._id} booking={booking}/>
+  })
+
+
+
+
 
   return (
     <>
-    <ol>
-        <BookingDetail/>
-        <button>Remove</button>
-    </ol>
+    <ul>
+        {bookingNodes}
+        
+    </ul>
     </>
   )
 

@@ -1,27 +1,49 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-const BookingDetail = () => {
+const BookingDetail = ({createBooking}) => {
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [date, setDate] = useState('')
+
+  const handleNameChange = (event) => setName(event.target.value)
+  const handleEmailChange = (event) => setEmail(event.target.value)
+  const handleDateChange = (event) => setDate(event.target.value)
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    createBooking({
+      name: name,
+      email: email,
+      date: date
+    });
+    setName('')
+    setEmail('')
+    setDate('') 
+  }
+
+
 
 
   return (
     <>
-       <form>
+       <form onSubmit={handleSubmit}>
             <h2>Add New Booking</h2>
             <div>
                 <label htmlFor="Guest Name">Guest Name:</label>
-                <input type="text"/>
+                <input required type="text" id="name" name="name" value={name} onChange={handleNameChange}/>
             </div>
             <div>
                 <label htmlFor="Guest Email Address">Guest Email Address:</label>
                 <input 
-                    type="text"/>
+                   required type="email" id="email" name="email" value={email} onChange={handleEmailChange}/>
             </div> 
              <div>
-                <label htmlFor="Checked in Status">Checked in Status</label>
+                <label htmlFor="Checked in Status">Date</label>
                 <input 
-                    type="check-box"/>
+                    required type="date" id="date" name="date" value={date} onChange={handleDateChange} />
             </div>
-            <input type="submit" value="Save" id="save"/>
+            <button type="submit">Add Booking</button>
 	    </form>
     </>
   )
