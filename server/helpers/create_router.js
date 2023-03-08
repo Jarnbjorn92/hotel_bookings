@@ -35,7 +35,7 @@ const createRouter = function(collection) {
             const newBookingData = req.body
             collection.insertOne(newBookingData)
             .then((results) => {
-                res.json(results)
+                res.json(results.ops[0])
             })
             .catch((err) => {
                 console.error(err)
@@ -47,7 +47,7 @@ const createRouter = function(collection) {
 
         router.delete('/:id', (req, res) => {
             const id = req.params.id
-            collection.deleteOne({_id: id})
+            collection.deleteOne({_id: ObjectID(id)})
             .then((results) => {
                 res.json(results)
             })
