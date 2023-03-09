@@ -1,4 +1,4 @@
-const baseURl = "http://localhost:9000/api/hotel"
+const baseURl = "http://localhost:9000/api/hotel/"
 
 const BookingService = {
 
