@@ -1,6 +1,11 @@
 import React from 'react'
 
-const BookingItem = ({booking}) => {
+const BookingItem = ({booking, handleDeleteBooking}) => {
+
+    const deleteBookings = () => {
+        handleDeleteBooking(booking._id)
+
+    }
   return (
     <div>
         
@@ -8,11 +13,7 @@ const BookingItem = ({booking}) => {
         <p>{booking.name}</p>
         <p>{booking.email}</p>
         <p>{booking.date}</p>
-        <button type="submit">Remove Booking</button>
-        
-
-
-
+        <button onClick={deleteBookings} type="submit">Remove Booking</button>
     </div>
   )
 }

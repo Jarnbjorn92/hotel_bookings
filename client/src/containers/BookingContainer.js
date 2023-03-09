@@ -16,7 +16,13 @@ const BookingContainer = () => {
   const createBooking = newBooking => {
     BookingService.addBooking(newBooking)
     .then(savedBooking => setBookings([...bookings, savedBooking]))
-  }
+  };
+
+  const handleDeleteBooking = bookingID => {
+    BookingService.deleteBooking(bookingID);
+
+    setBookings(bookings.filter(booking => booking._id !== bookingID))
+  };
 
 
 
@@ -24,7 +30,7 @@ const BookingContainer = () => {
   return (
     <>
     <BookingDetail createBooking={createBooking}/>
-    <BookingList bookings={bookings}/>
+    <BookingList bookings={bookings} handleDeleteBooking={handleDeleteBooking}/>
     </>
   )
 }

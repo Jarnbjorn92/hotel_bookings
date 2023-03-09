@@ -17,10 +17,10 @@ addBooking(booking){
   
 }, 
 
-deleteBooking(id)  {
+deleteBooking(id) {
     return fetch(baseURl + id, {
         method: 'DELETE'
-    });
+    })
 }
 };
 
